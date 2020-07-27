@@ -1,15 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {Provider} from 'react-redux'
+import store from './store'
+import { Image, StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import {GetStarted, Welcome, Home, Recipes} from './components'
+import Navigation from './components/Navigation'
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+     <Navigation />
+     </Provider>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -18,4 +26,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+  logo: {
+    width: 305,
+    height: 159,
+    marginBottom: 20,
+  },
+  title: {
+    color: '#888',
+    fontSize: 25,
+    marginHorizontal: 20,
+    marginBottom: 20,
+
+  },
+  button: {
+    backgroundColor: '#99ccff',
+    padding: 16,
+    borderRadius: 5,
+    marginBottom: 20,
+
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#fff',
+  },
+  input: {
+    padding: 3,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#888',
+    height: 40,
+    marginBottom: 10,
+
+  }
+})
+
